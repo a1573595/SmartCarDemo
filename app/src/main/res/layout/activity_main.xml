@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <com.example.user.smartcardemo.SeekCircle
+        android:id="@+id/SeekCircle"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:rotation="-135" />
+
+    <com.example.user.smartcardemo.SeekCircle
+        android:id="@+id/SeekCircle2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="24dp"
+        android:rotation="-135"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/SeekCircle"
+        app:layout_constraintEnd_toEndOf="@+id/SeekCircle"
+        app:layout_constraintStart_toStartOf="@+id/SeekCircle" />
+
+    <TextView
+        android:id="@+id/tv_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/wheel"
+        android:gravity="center"
+        android:text="%"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/SeekCircle"
+        app:layout_constraintEnd_toEndOf="@+id/SeekCircle"
+        app:layout_constraintStart_toStartOf="@+id/SeekCircle"
+        app:layout_constraintTop_toTopOf="@+id/SeekCircle"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:menu="@menu/menu_navigation_center_fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_camera_black_24dp"
+        android:tint="@android:color/darker_gray"
+        app:backgroundTint="@android:color/white"
+        app:borderWidth="0dp"
+        app:elevation="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bnve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
