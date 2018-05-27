@@ -1,24 +1,16 @@
 package com.example.user.smartcardemo
 
-import android.graphics.drawable.Drawable
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-
-import kotlinx.android.synthetic.main.activity_main.*
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.Matrix
-import android.util.Log
-
 import com.google.firebase.database.*
 import com.google.firebase.iid.FirebaseInstanceId
-import com.google.firebase.database.DataSnapshot
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var bnve: BottomNavigationViewEx
@@ -32,12 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         initView()
 
-        updateText(75)
-
         if(FirebaseInstanceId.getInstance().token!=null)
             Log.d("FireBase_Token", FirebaseInstanceId.getInstance().token)
-        val database:FirebaseDatabase = FirebaseDatabase.getInstance()
-        val CarInfo:DatabaseReference = database.getReference().child("Info")
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val CarInfo: DatabaseReference = database.getReference().child("Car_Info")
         CarInfo.addChildEventListener(
                 object : ChildEventListener {
                     override fun onChildRemoved(dataSnapshot: DataSnapshot) {
@@ -49,10 +39,32 @@ class MainActivity : AppCompatActivity() {
                     override fun onChildChanged(dataSnapshot: DataSnapshot, p1: String?) {
                         Log.e("Database", "ChildChanged")
                         if(!dataSnapshot.hasChildren()) {
-                            Log.e("Database", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                            Log.e("Database1", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                            when(dataSnapshot.key){
+                                "Door_lock"->{
+                                    if(dataSnapshot.getValue() as Boolean)
+                                        img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
+                                    else
+                                        img_cardoor.setColorFilter(Color.parseColor("#000000"))
+                                }
+                                "Gear"-> updateGear(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Light"-> updateLight(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Speed"-> updateText(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Steering"-> img_wheel.rotation = java.lang.Float.valueOf(dataSnapshot.getValue().toString())
+                            }
                         }else{
                             for (childSnapshot in dataSnapshot.children) {
-                                Log.e("Database","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
+                                Log.e("Database2","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
+                                when(childSnapshot.key){
+                                    "Brake_pedal"-> updateBrake(Integer.valueOf(childSnapshot.getValue().toString()))
+                                    "Foot_brake_pedal"->{
+                                        if(childSnapshot.getValue() as Boolean)
+                                            img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
+                                        else
+                                            img_handbrake.setColorFilter(Color.parseColor("#00000000"))
+                                    }
+                                //"Gas_pedal"->
+                                }
                             }
                         }
                     }
@@ -63,17 +75,31 @@ class MainActivity : AppCompatActivity() {
                     override fun onChildAdded(dataSnapshot: DataSnapshot, p1: String?) {
                         Log.e("Database", "ChildAdded")
                         if(!dataSnapshot.hasChildren()) {
-                            Log.e("Database", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                            Log.e("Database1", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                            when(dataSnapshot.key){
+                                "Door_lock"->{
+                                    if(dataSnapshot.getValue() as Boolean)
+                                        img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
+                                    else
+                                        img_cardoor.setColorFilter(Color.parseColor("#000000"))
+                                }
+                                "Gear"-> updateGear(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Light"-> updateLight(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Speed"-> updateText(Integer.valueOf(dataSnapshot.getValue().toString()))
+                                "Steering"-> img_wheel.rotation = java.lang.Float.valueOf(dataSnapshot.getValue().toString())
+                            }
                         }else{
                             for (childSnapshot in dataSnapshot.children) {
-                                Log.e("Database","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
+                                Log.e("Database2","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
                                 when(childSnapshot.key){
-                                    "Door_lock"->
-                                        if((childSnapshot.getValue() is Boolean))
-                                            img_cardoor.setColorFilter(Color.parseColor("#FFFF00"))
+                                    "Brake_pedal"-> updateBrake(Integer.valueOf(childSnapshot.getValue().toString()))
+                                    "Foot_brake_pedal"->{
+                                        if(childSnapshot.getValue() as Boolean)
+                                            img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
                                         else
-                                            img_cardoor.setColorFilter(Color.parseColor("#000000"))
-
+                                            img_handbrake.setColorFilter(Color.parseColor("#00000000"))
+                                    }
+                                //"Gas_pedal"->
                                 }
                             }
                         }
@@ -95,18 +121,20 @@ class MainActivity : AppCompatActivity() {
         img_wheel.rotation = 45f
         //wheel = rotate(45f)
         //tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, wheel, null, null)
-        img_headlight.setColorFilter(Color.parseColor("#FFFF00"))
-        img_headlight2.setColorFilter(Color.parseColor("#FFFF00"))
-        img_warning.setColorFilter(Color.parseColor("#FF0000"))
-        img_cardoor.setColorFilter(Color.parseColor("#FFFF00"))
-        img_abs.setColorFilter(Color.parseColor("#FFFF00"))
-        img_handbrake.setColorFilter(Color.parseColor("#FF0000"))
-        img_brake.setColorFilter(Color.parseColor("#FF0000"))
+        img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
+        img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
+        img_warning.setColorFilter(Color.parseColor("#F0010E"))
+        img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
+        img_abs.setColorFilter(Color.parseColor("#EEBB11"))
+        img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
+        img_brake.setColorFilter(Color.parseColor("#F0010E"))
 
-        img_parking.setColorFilter(Color.parseColor("#FF8800"))
+        img_parking.setColorFilter(Color.parseColor("#EEBB11"))
         img_neutral.setColorFilter(Color.parseColor("#888888"))
         img_drive.setColorFilter(Color.parseColor("#888888"))
         img_reverse.setColorFilter(Color.parseColor("#888888"))
+
+        updateText(75)
     }
 
     /*private fun rotate(degree: Float): Drawable {
@@ -142,6 +170,42 @@ class MainActivity : AppCompatActivity() {
             SeekCircle_speed.progress = input
             tv_speed.text = SeekCircle_speed.progress.toString()
         } catch (e: Exception) {
+        }
+    }
+
+    private fun updateGear(gear: Int){
+        img_parking.setColorFilter(Color.parseColor("#888888"))
+        img_neutral.setColorFilter(Color.parseColor("#888888"))
+        img_drive.setColorFilter(Color.parseColor("#888888"))
+        img_reverse.setColorFilter(Color.parseColor("#888888"))
+
+        when(gear){
+            0->img_parking.setColorFilter(Color.parseColor("#EEBB11"))
+            1->img_neutral.setColorFilter(Color.parseColor("#EEBB11"))
+            2->img_drive.setColorFilter(Color.parseColor("#EEBB11"))
+            3->img_reverse.setColorFilter(Color.parseColor("#EEBB11"))
+        }
+    }
+
+    private fun updateLight(light: Int){
+        img_headlight.setColorFilter(Color.parseColor("#00000000"))
+        img_headlight2.setColorFilter(Color.parseColor("#00000000"))
+        img_warning.setColorFilter(Color.parseColor("#00000000"))
+
+        when(light){
+            1->img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
+            2->img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
+            3->img_warning.setColorFilter(Color.parseColor("#F0010E"))
+        }
+    }
+
+    private fun updateBrake(brake: Int){
+        img_brake.setColorFilter(Color.parseColor("#00000000"))
+        img_abs.setColorFilter(Color.parseColor("#00000000"))
+
+        when(brake){
+            1,2->img_brake.setColorFilter(Color.parseColor("#F0010E"))
+            3->img_abs.setColorFilter(Color.parseColor("#EEBB11"))
         }
     }
 }
