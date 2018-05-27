@@ -5,56 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:background="@android:color/black">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_headlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:src="@drawable/ic_light"
         app:layout_constraintEnd_toEndOf="@+id/img_headlight2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_headlight2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/img_headlight3"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/ic_light2"
+        app:layout_constraintEnd_toEndOf="@+id/img_warning"
         app:layout_constraintStart_toStartOf="@+id/img_headlight"
         app:layout_constraintTop_toTopOf="@+id/img_headlight" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_headlight3"
+    <ImageView
+        android:id="@+id/img_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/ic_warning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/img_headlight2"
         app:layout_constraintTop_toTopOf="@+id/img_headlight2" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_parking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="@+id/img_neutral"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_neutral"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,13 +59,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="@+id/img_drive"
         app:layout_constraintStart_toStartOf="@+id/img_parking"
         app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_drive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,81 +71,69 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="@+id/img_reverse"
         app:layout_constraintStart_toStartOf="@+id/img_neutral"
         app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_reverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/img_drive"
         app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/img_cardoor"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:src="@drawable/ic_cardoor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/img_handbrake"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:src="@drawable/ic_handbrake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/img_abs"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:src="@drawable/ic_abs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/img_brake"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp"
+        android:src="@drawable/ic_brake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
@@ -177,6 +160,9 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="%"
+        android:textColor="@android:color/white"
+        android:textSize="42sp"
+        android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         app:layout_constraintBottom_toBottomOf="@+id/SeekCircle_speed"
         app:layout_constraintEnd_toEndOf="@+id/SeekCircle_speed"
@@ -209,7 +195,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_wheel"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
@@ -219,6 +205,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003"
-        app:srcCompat="@drawable/wheel" />
+        app:layout_constraintVertical_bias="0.4"
+        app:srcCompat="@drawable/ic_wheel" />
 </android.support.constraint.ConstraintLayout>

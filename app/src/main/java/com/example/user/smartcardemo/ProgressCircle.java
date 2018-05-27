@@ -45,32 +45,27 @@ public class ProgressCircle extends View {
 		mPaint.setColor(mColor1); // Set default
 	}
 	//------�غc�l	
-	public ProgressCircle(Context context, AttributeSet attrs, int defStyle)
-	{
+	public ProgressCircle(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		
 		initAttributes(context, attrs);
 	}
 	
-	public ProgressCircle(Context context, AttributeSet attrs)
-	{
+	public ProgressCircle(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
 		initAttributes(context, attrs);
 	}
 	
-	public ProgressCircle(Context context)
-	{
+	public ProgressCircle(Context context) {
 		super(context);
 	}
 	
 	//�غc�l----end
 	
-	private void initAttributes(Context context, AttributeSet attrs)
-	{
+	private void initAttributes(Context context, AttributeSet attrs) {
 		TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SeekCircle, 0, 0);
-		try
-		{
+		try {
 			// Read and clamp max
 			int max = attributes.getInteger(R.styleable.SeekCircle_max, 100);
 			//���o�w�q��int,�p�G�S���w�q�N�Ϋ��(100)
@@ -79,15 +74,12 @@ public class ProgressCircle extends View {
 			// Read and clamp progress
 			int progress = attributes.getInteger(R.styleable.SeekCircle_progress, 0);
 			mProgress = Math.max(Math.min(progress, mMaxProgress), 0);
-		}
-		finally
-		{
+		} finally {
 			attributes.recycle();
 		}
 	}
 	
-	private void updateDimensions(int width, int height)
-	{
+	private void updateDimensions(int width, int height) {
 		// Update center position
 		mCenterX = width / 2.0f;
 		mCenterY = height / 2.0f;
@@ -105,8 +97,7 @@ public class ProgressCircle extends View {
 	}
 	
 	@Override
-	protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-	{
+	protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		int width = MeasureSpec.getSize(widthMeasureSpec);
 		int height = MeasureSpec.getSize(heightMeasureSpec);
 		
@@ -119,35 +110,29 @@ public class ProgressCircle extends View {
 	}
 	
 	@Override //����size�j�p
-	protected void onSizeChanged(int w, int h, int oldw, int oldh)
-	{
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		
 		updateDimensions(w, h);
 	}
 	
 	@Override
-	protected void onDraw(Canvas canvas)
-	{
+	protected void onDraw(Canvas canvas) {
 		// Center our canvas
 		canvas.translate(mCenterX, mCenterY);//�����쥻���I�h��x,�h��y ex:100,100 -> 101,101
 		
 		float rotation = 270.0f / (float) mMaxProgress; //rotation ���� 360/100
-		for (int i = 0; i < mMaxProgress; ++i)
-		{
+		for (int i = 0; i < mMaxProgress; ++i) {
 			canvas.save();
 			
 			canvas.rotate((float) i * rotation);
 			canvas.translate(0, -mRadius);
 			
-			if (i < mProgress)
-			{
+			if (i < mProgress) {
 				float bias = (float) i / (float) (mMaxProgress - 1);
 				int color = interpolateColor(mColor1, mColor2, bias);//���h�C��
 				mPaint.setColor(color);//��W�C��,�b�o�@�q
-			}
-			else
-			{
+			} else {
 				canvas.scale(0.7f, 0.7f);
 				mPaint.setColor(mInactiveColor);
 			}
@@ -164,8 +149,7 @@ public class ProgressCircle extends View {
 		return (a + ((b - a) * bias));
 	}
 
-	private int interpolateColor(int colorA, int colorB, float bias)
-	{
+	private int interpolateColor(int colorA, int colorB, float bias) {
 		float[] hsvColorA = new float[3];
 		Color.colorToHSV(colorA, hsvColorA);
 
