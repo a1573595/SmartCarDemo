@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 27
@@ -38,4 +39,8 @@ dependencies {
 
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation "com.android.support:design:27.+"
+
+    //implementation 'com.google.firebase:firebase-core:11.4.2'
+    implementation 'com.google.firebase:firebase-messaging:11.4.2'
+    implementation 'com.google.firebase:firebase-database:11.4.2'
 }

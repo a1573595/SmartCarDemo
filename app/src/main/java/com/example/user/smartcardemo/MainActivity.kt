@@ -14,7 +14,11 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Matrix
+import android.util.Log
 
+import com.google.firebase.database.*
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.database.DataSnapshot
 
 class MainActivity : AppCompatActivity() {
     lateinit var bnve: BottomNavigationViewEx
@@ -29,6 +33,52 @@ class MainActivity : AppCompatActivity() {
         initView()
 
         updateText(75)
+
+        if(FirebaseInstanceId.getInstance().token!=null)
+            Log.d("FireBase_Token", FirebaseInstanceId.getInstance().token)
+        val database:FirebaseDatabase = FirebaseDatabase.getInstance()
+        val CarInfo:DatabaseReference = database.getReference().child("Info")
+        CarInfo.addChildEventListener(
+                object : ChildEventListener {
+                    override fun onChildRemoved(dataSnapshot: DataSnapshot) {
+                    }
+
+                    override fun onCancelled(p0: DatabaseError?) {
+                    }
+
+                    override fun onChildChanged(dataSnapshot: DataSnapshot, p1: String?) {
+                        Log.e("Database", "ChildChanged")
+                        if(!dataSnapshot.hasChildren()) {
+                            Log.e("Database", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                        }else{
+                            for (childSnapshot in dataSnapshot.children) {
+                                Log.e("Database","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
+                            }
+                        }
+                    }
+
+                    override fun onChildMoved(p0: DataSnapshot?, p1: String?) {
+                    }
+
+                    override fun onChildAdded(dataSnapshot: DataSnapshot, p1: String?) {
+                        Log.e("Database", "ChildAdded")
+                        if(!dataSnapshot.hasChildren()) {
+                            Log.e("Database", "Key:"+dataSnapshot.key +"   Value:"+ dataSnapshot.value.toString())
+                        }else{
+                            for (childSnapshot in dataSnapshot.children) {
+                                Log.e("Database","Key:"+childSnapshot.key+"   Value:"+childSnapshot.getValue().toString())
+                                when(childSnapshot.key){
+                                    "Door_lock"->
+                                        if((childSnapshot.getValue() is Boolean))
+                                            img_cardoor.setColorFilter(Color.parseColor("#FFFF00"))
+                                        else
+                                            img_cardoor.setColorFilter(Color.parseColor("#000000"))
+
+                                }
+                            }
+                        }
+                    }
+                })
     }
 
     private fun initView(){
@@ -52,6 +102,11 @@ class MainActivity : AppCompatActivity() {
         img_abs.setColorFilter(Color.parseColor("#FFFF00"))
         img_handbrake.setColorFilter(Color.parseColor("#FF0000"))
         img_brake.setColorFilter(Color.parseColor("#FF0000"))
+
+        img_parking.setColorFilter(Color.parseColor("#FF8800"))
+        img_neutral.setColorFilter(Color.parseColor("#888888"))
+        img_drive.setColorFilter(Color.parseColor("#888888"))
+        img_reverse.setColorFilter(Color.parseColor("#888888"))
     }
 
     /*private fun rotate(degree: Float): Drawable {

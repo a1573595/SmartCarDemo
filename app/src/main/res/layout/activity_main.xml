@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/img_headlight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/ic_light"
@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/img_headlight2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:src="@drawable/ic_light2"
@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/img_warning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:src="@drawable/ic_warning"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,49 +42,46 @@
 
     <ImageView
         android:id="@+id/img_parking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:layout_constraintEnd_toEndOf="@+id/img_neutral"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_letter_p"
+        app:layout_constraintEnd_toEndOf="@+id/img_reverse"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
 
     <ImageView
-        android:id="@+id/img_neutral"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/img_reverse"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:layout_constraintEnd_toEndOf="@+id/img_drive"
+        android:src="@drawable/ic_letter_r"
+        app:layout_constraintEnd_toEndOf="@+id/img_neutral"
         app:layout_constraintStart_toStartOf="@+id/img_parking"
-        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+        app:layout_constraintTop_toTopOf="@+id/img_parking" />
+
+    <ImageView
+        android:id="@+id/img_neutral"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/ic_letter_n"
+        app:layout_constraintEnd_toEndOf="@+id/img_drive"
+        app:layout_constraintStart_toStartOf="@+id/img_reverse"
+        app:layout_constraintTop_toTopOf="@+id/img_parking" />
 
     <ImageView
         android:id="@+id/img_drive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
-        app:layout_constraintEnd_toEndOf="@+id/img_reverse"
-        app:layout_constraintStart_toStartOf="@+id/img_neutral"
-        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
-
-    <ImageView
-        android:id="@+id/img_reverse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wheel"
+        android:src="@drawable/ic_letter_d"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/img_drive"
-        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+        app:layout_constraintStart_toStartOf="@+id/img_neutral"
+        app:layout_constraintTop_toTopOf="@+id/img_parking" />
 
     <ImageView
         android:id="@+id/img_cardoor"
@@ -97,46 +94,43 @@
         app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.65" />
 
     <ImageView
         android:id="@+id/img_handbrake"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:src="@drawable/ic_handbrake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/img_cardoor"
+        app:layout_constraintVertical_bias="0.6" />
 
     <ImageView
         android:id="@+id/img_abs"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:src="@drawable/ic_abs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toTopOf="@+id/img_cardoor"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/img_brake"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:src="@drawable/ic_brake"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toTopOf="@+id/img_handbrake"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.example.user.smartcardemo.SeekCircle
         android:id="@+id/SeekCircle_speed"
