@@ -7,28 +7,165 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_headlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_headlight2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_headlight2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_headlight3"
+        app:layout_constraintStart_toStartOf="@+id/img_headlight"
+        app:layout_constraintTop_toTopOf="@+id/img_headlight" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_headlight3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/img_headlight2"
+        app:layout_constraintTop_toTopOf="@+id/img_headlight2" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_parking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_neutral"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_neutral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_drive"
+        app:layout_constraintStart_toStartOf="@+id/img_parking"
+        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_drive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_reverse"
+        app:layout_constraintStart_toStartOf="@+id/img_neutral"
+        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_reverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/img_drive"
+        app:layout_constraintTop_toBottomOf="@+id/img_headlight" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/SeekCircle_speed"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wheel"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/SeekCircle_speed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
     <com.example.user.smartcardemo.SeekCircle
-        android:id="@+id/SeekCircle"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:id="@+id/SeekCircle_speed"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_marginEnd="8dp"
+        android:rotation="-135"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:rotation="-135" />
-
-    <com.example.user.smartcardemo.SeekCircle
-        android:id="@+id/SeekCircle2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="24dp"
-        android:rotation="-135"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/SeekCircle"
-        app:layout_constraintEnd_toEndOf="@+id/SeekCircle"
-        app:layout_constraintStart_toStartOf="@+id/SeekCircle" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tv_speed"
@@ -38,16 +175,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:drawablePadding="10dp"
-        android:drawableTop="@drawable/wheel"
         android:gravity="center"
         android:text="%"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/SeekCircle"
-        app:layout_constraintEnd_toEndOf="@+id/SeekCircle"
-        app:layout_constraintStart_toStartOf="@+id/SeekCircle"
-        app:layout_constraintTop_toTopOf="@+id/SeekCircle"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintBottom_toBottomOf="@+id/SeekCircle_speed"
+        app:layout_constraintEnd_toEndOf="@+id/SeekCircle_speed"
+        app:layout_constraintStart_toStartOf="@+id/SeekCircle_speed"
+        app:layout_constraintTop_toTopOf="@+id/SeekCircle_speed"
+        app:layout_constraintVertical_bias="0.4" />
 
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bnve"
@@ -72,4 +207,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/bnve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41000003"
+        app:srcCompat="@drawable/wheel" />
 </android.support.constraint.ConstraintLayout>

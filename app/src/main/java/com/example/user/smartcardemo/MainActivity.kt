@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { view -> Toast.makeText(this@MainActivity, "Center", Toast.LENGTH_SHORT).show()}
 
         wheel = rotate(45f)
-        tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, wheel, null, null)
+        //tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, wheel, null, null)
     }
 
     private fun rotate(degree: Float): Drawable {
@@ -83,8 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateText(input: Int) {
         try {
-            SeekCircle.progress = input
-            tv_speed.text = SeekCircle.progress.toString()
+            SeekCircle_speed.progress = input
+            tv_speed.text = SeekCircle_speed.progress.toString()
         } catch (e: Exception) {
         }
     }
