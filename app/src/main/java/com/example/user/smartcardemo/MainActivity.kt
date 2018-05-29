@@ -8,6 +8,7 @@ import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.database.*
@@ -36,24 +37,24 @@ class MainActivity : AppCompatActivity() {
 
         initView()
         workRunnable = Runnable {
-            img_wheel.rotation = 45f
-            dot.setColorFilter(Color.parseColor("#77FF00"), PorterDuff.Mode.SRC_ATOP)
+            img_wheel.rotation = 0f
+            dot.setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP)
             tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, dot, null, null)
 
-            img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
-            img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
-            img_warning.setColorFilter(Color.parseColor("#F0010E"))
-            img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
-            img_abs.setColorFilter(Color.parseColor("#EEBB11"))
-            img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
-            img_brake.setColorFilter(Color.parseColor("#F0010E"))
+            img_headlight.setColorFilter(Color.parseColor("#000000"))
+            img_headlight2.setColorFilter(Color.parseColor("#000000"))
+            img_warning.setColorFilter(Color.parseColor("#000000"))
+            img_cardoor.setColorFilter(Color.parseColor("#000000"))
+            img_abs.setColorFilter(Color.parseColor("#000000"))
+            img_handbrake.setColorFilter(Color.parseColor("#000000"))
+            img_brake.setColorFilter(Color.parseColor("#000000"))
 
-            img_parking.setColorFilter(Color.parseColor("#EEBB11"))
-            img_neutral.setColorFilter(Color.parseColor("#EEBB11"))
-            img_drive.setColorFilter(Color.parseColor("#EEBB11"))
-            img_reverse.setColorFilter(Color.parseColor("#EEBB11"))
+            img_parking.setColorFilter(Color.parseColor("#000000"))
+            img_neutral.setColorFilter(Color.parseColor("#000000"))
+            img_drive.setColorFilter(Color.parseColor("#000000"))
+            img_reverse.setColorFilter(Color.parseColor("#000000"))
 
-            updateText(75)
+            updateText(0)
 
             CarInfo.addChildEventListener(
                     object : ChildEventListener {
@@ -146,6 +147,7 @@ class MainActivity : AppCompatActivity() {
         bnve.enableShiftingMode(false)
         bnve.enableAnimation(false)
         bnve.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        SeekCircle_speed.setMax(255)
         fab.setOnClickListener { /*_ ->*/
             //Toast.makeText(this@MainActivity, "Center", Toast.LENGTH_SHORT).show()
             reset()
@@ -153,24 +155,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reset(){
-        img_wheel.rotation = 0f
-        dot.setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP)
+        img_wheel.rotation = 45f
+        dot.setColorFilter(Color.parseColor("#77FF00"), PorterDuff.Mode.SRC_ATOP)
         tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, dot, null, null)
 
-        img_headlight.setColorFilter(Color.parseColor("#000000"))
-        img_headlight2.setColorFilter(Color.parseColor("#000000"))
-        img_warning.setColorFilter(Color.parseColor("#000000"))
-        img_cardoor.setColorFilter(Color.parseColor("#000000"))
-        img_abs.setColorFilter(Color.parseColor("#000000"))
-        img_handbrake.setColorFilter(Color.parseColor("#000000"))
-        img_brake.setColorFilter(Color.parseColor("#000000"))
+        img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
+        img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
+        img_warning.setColorFilter(Color.parseColor("#F0010E"))
+        img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
+        img_abs.setColorFilter(Color.parseColor("#EEBB11"))
+        img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
+        img_brake.setColorFilter(Color.parseColor("#F0010E"))
 
-        img_parking.setColorFilter(Color.parseColor("#000000"))
-        img_neutral.setColorFilter(Color.parseColor("#000000"))
-        img_drive.setColorFilter(Color.parseColor("#000000"))
-        img_reverse.setColorFilter(Color.parseColor("#000000"))
+        img_parking.setColorFilter(Color.parseColor("#EEBB11"))
+        img_neutral.setColorFilter(Color.parseColor("#EEBB11"))
+        img_drive.setColorFilter(Color.parseColor("#EEBB11"))
+        img_reverse.setColorFilter(Color.parseColor("#EEBB11"))
 
-        updateText(0)
+        updateText(255)
 
         handler.removeCallbacks(workRunnable)
         handler.postDelayed(workRunnable, 1000)
@@ -189,12 +191,14 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.i_visibility -> {
+                ll_page.visibility = View.GONE;
                 return@OnNavigationItemSelectedListener true
             }
             R.id.i_empty -> {
                 return@OnNavigationItemSelectedListener false
             }
             R.id.i_backup -> {
+                ll_page.visibility = View.VISIBLE;
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -240,7 +244,8 @@ class MainActivity : AppCompatActivity() {
         img_abs.setColorFilter(Color.parseColor("#00000000"))
 
         when(brake){
-            1,2->img_brake.setColorFilter(Color.parseColor("#F0010E"))
+            1->img_brake.setColorFilter(Color.parseColor("#F0010E"))
+            2->img_brake.setColorFilter(Color.parseColor("#FF0000"))
             3->img_abs.setColorFilter(Color.parseColor("#EEBB11"))
         }
     }
