@@ -36,23 +36,16 @@ class MainActivity : AppCompatActivity() {
 
         initView()
         workRunnable = Runnable {
-            img_wheel.rotation = 0f
+            updateWheel(0f)
             dot.setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP)
             tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, dot, null, null)
 
-            img_headlight.setColorFilter(Color.parseColor("#000000"))
-            img_headlight2.setColorFilter(Color.parseColor("#000000"))
-            img_warning.setColorFilter(Color.parseColor("#000000"))
+            updateLight(0)
             img_cardoor.setColorFilter(Color.parseColor("#000000"))
             img_abs.setColorFilter(Color.parseColor("#000000"))
             img_handbrake.setColorFilter(Color.parseColor("#000000"))
-            img_brake.setColorFilter(Color.parseColor("#000000"))
-
-            img_parking.setColorFilter(Color.parseColor("#000000"))
-            img_neutral.setColorFilter(Color.parseColor("#000000"))
-            img_drive.setColorFilter(Color.parseColor("#000000"))
-            img_reverse.setColorFilter(Color.parseColor("#000000"))
-
+            updateBrake(0)
+            updateGear(4)
             updateText(0)
 
             CarInfo.addChildEventListener(
@@ -113,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                                     "Gear"-> updateGear(Integer.valueOf(dataSnapshot.getValue().toString()))
                                     "Light"-> updateLight(Integer.valueOf(dataSnapshot.getValue().toString()))
                                     "Speed"-> updateText(Integer.valueOf(dataSnapshot.getValue().toString()))
-                                    "Steering"-> img_wheel.rotation = java.lang.Float.valueOf(dataSnapshot.getValue().toString())
+                                    "Steering"-> updateWheel(java.lang.Float.valueOf(dataSnapshot.getValue().toString()))
                                 }
                             }else{
                                 for (childSnapshot in dataSnapshot.children) {
@@ -154,17 +147,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reset(){
-        img_wheel.rotation = 45f
+        updateWheel(45f)
         dot.setColorFilter(Color.parseColor("#77FF00"), PorterDuff.Mode.SRC_ATOP)
         tv_speed.setCompoundDrawablesWithIntrinsicBounds(null, dot, null, null)
 
         img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
         img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
         img_warning.setColorFilter(Color.parseColor("#F0010E"))
+        tv_headlight.text = "大燈\n\n關"
+        tv_headlight2.text = "小燈\n\n關"
+        tv_warning.text = "警示燈\n\n關"
+
         img_cardoor.setColorFilter(Color.parseColor("#EEBB11"))
         img_abs.setColorFilter(Color.parseColor("#EEBB11"))
         img_handbrake.setColorFilter(Color.parseColor("#F0010E"))
         img_brake.setColorFilter(Color.parseColor("#F0010E"))
+        tv_abs.text = "手剎車\n\n無"
+        tv_brake.text = "剎車\n\n無"
+        tv_accelerator.text = "油門\n\n無"
 
         img_parking.setColorFilter(Color.parseColor("#EEBB11"))
         img_neutral.setColorFilter(Color.parseColor("#EEBB11"))
@@ -204,10 +204,16 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
+    private fun updateWheel(input: Float){
+        img_wheel.rotation = input
+        tv_rotation.text = "方向盤\n\n"+input.toString()+"度"
+    }
+
     private fun updateText(input: Int) {
         try {
             SeekCircle_speed.progress = input
             tv_speed.text = SeekCircle_speed.progress.toString()
+            tv_speed2.text = "車速\n\n"+SeekCircle_speed.progress.toString()
         } catch (e: Exception) {
         }
     }
@@ -231,10 +237,23 @@ class MainActivity : AppCompatActivity() {
         img_headlight2.setColorFilter(Color.parseColor("#00000000"))
         img_warning.setColorFilter(Color.parseColor("#00000000"))
 
+        tv_headlight.text = "大燈\n\n關"
+        tv_headlight2.text = "小燈\n\n關"
+        tv_warning.text = "警示燈\n\n關"
+
         when(light){
-            1->img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
-            2->img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
-            3->img_warning.setColorFilter(Color.parseColor("#F0010E"))
+            1-> {
+                img_headlight.setColorFilter(Color.parseColor("#EEBB11"))
+                tv_headlight.text = "大燈\n\n開"
+            }
+            2-> {
+                img_headlight2.setColorFilter(Color.parseColor("#EEBB11"))
+                tv_headlight2.text = "小燈\n\n開"
+            }
+            3-> {
+                img_warning.setColorFilter(Color.parseColor("#F0010E"))
+                tv_warning.text = "警示燈\n\n開"
+            }
         }
     }
 
@@ -242,10 +261,21 @@ class MainActivity : AppCompatActivity() {
         img_brake.setColorFilter(Color.parseColor("#00000000"))
         img_abs.setColorFilter(Color.parseColor("#00000000"))
 
+        tv_brake.text = "剎車\n\n無"
+
         when(brake){
-            1->img_brake.setColorFilter(Color.parseColor("#F0010E"))
-            2->img_brake.setColorFilter(Color.parseColor("#FF0000"))
-            3->img_abs.setColorFilter(Color.parseColor("#EEBB11"))
+            1->{
+                img_brake.setColorFilter(Color.parseColor("#F0010E"))
+                tv_brake.text = "剎車\\n\\n輕踩"
+            }
+            2->{
+                img_brake.setColorFilter(Color.parseColor("#FF0000"))
+                tv_brake.text = "剎車\n\n重踩"
+            }
+            3->{
+                img_abs.setColorFilter(Color.parseColor("#EEBB11"))
+                tv_brake.text = "ABS\n\n剎車鎖死"
+            }
         }
     }
 }

@@ -251,7 +251,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="車速\n\n%"
+                    android:text="車速\n\n0"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
                 <TextView
@@ -260,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="方向盤\n\n%"
+                    android:text="方向盤\n\n0"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -284,30 +284,30 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_lock"
+                        android:id="@+id/tv_abs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="手剎車\n\n%"
+                        android:text="手剎車\n\n無"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
                     <TextView
-                        android:id="@+id/tv_light"
+                        android:id="@+id/tv_brake"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="剎車\n\n%"
+                        android:text="剎車\n\n無"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
                     <TextView
-                        android:id="@+id/tv_gear"
+                        android:id="@+id/tv_accelerator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="油門\n\n%"
+                        android:text="油門\n\n無"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
                 </LinearLayout>
 
